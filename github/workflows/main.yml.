@@ -1,0 +1,24 @@
+name: Run Sub Bot
+
+on:
+  schedule:
+    # هر 5 دقیقه
+    - cron: "*/5 * * * *"
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Run bot
+        run: python bot.py
